@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+   
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://img.freepik.com/free-vector/realistic-neon-lights-background_23-2148916523.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1726531200&semt=ais_hybrid');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.palindrome-container {
+    background-color: #3333337d;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgb(236, 103, 165);
+    width: 350px;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+p{
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #9b59b6;
+    border-radius: 6px;
+    width: 70%;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+button {
+    padding: 10px 20px;
+    background-color: #9b59b6;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #8e44ad;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #fff;
+}
+
+    </style>
+</head>
+<body>
+    <div class="palindrome-container">
+        <h1>Palindrome Checker</h1>
+        <p>
+            A palindrome checker is a tool or program that checks whether a given word, phrase, or sequence of characters reads the same backward as it does forward.</p>
+        <div class="input-group">
+            <input type="text" id="inputString" placeholder="Enter text">
+            <button onclick="checkPalindrome()">Check</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+ <script>
+function checkPalindrome() {
+    const inputString = document.getElementById("inputString").value.trim();
+    const resultElement = document.getElementById("result");
+
+    if (inputString === "") {
+        displayResult("Please enter some text.", "error");
+        return;
+    }
+
+    const cleanedString = inputString.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+    const reversedString = cleanedString.split('').reverse().join('');
+
+    if (cleanedString === reversedString) {
+        resultElement.innerHTML = `"${inputString}" is a palindrome!`;
+        resultElement.style.color = "green";
+    } else {
+        resultElement.innerHTML = `"${inputString}" is not a palindrome.`;
+        resultElement.style.color = "red";
+    }
+}
+
+ </script>
+</body>
+</html>
